@@ -14,7 +14,7 @@ def encode_image_to_base64(image_path):
             encoded_image = base64.b64encode(image_file.read()).decode("utf-8")
             return encoded_image
     except FileNotFoundError:
-        return "¡Oops! Imagen no encontrada 💔"
+        return "Error no dibujaste bien"
 
 # 🎨 Configuración de la página
 st.set_page_config(page_title='🪄 Tablero Mágico', page_icon="🎀")
@@ -22,13 +22,13 @@ st.title('🧚‍♀️ Bienvenida al Tablero Mágico de Dibujos Inteligentes �
 
 # 🧁 Sidebar adorable
 with st.sidebar:
-    st.header("🌸 Acerca de esta app")
-    st.write("Este es un espacio mágico donde tu dibujo será interpretado por una IA 🧠✨. ¡Exprésate y observa cómo la tecnología lo comprende!")
+    st.header("Pilla congfiguraciòn")
+    st.write("Si dibujas lo suficientemente bien la IA podrà comprenderte, dèjate asombrar por el poder de la tecnologìa")
     st.markdown("---")
-    st.subheader("🎨 Opciones del pincel")
-    stroke_width = st.slider('Grosor del pincel 🖌️', 1, 30, 5)
-    stroke_color = st.color_picker("Color del trazo 🌈", "#000000")
-    bg_base_color = st.color_picker("Color de fondo 🎀", "#FFFFFF")
+    st.subheader("Pincel")
+    stroke_width = st.slider('Grosor del pincel ', 1, 30, 5)
+    stroke_color = st.color_picker("Color del fondooo", "#000000")
+    bg_base_color = st.color_picker("Color del fondooo", "#FFFFFF")
     bg_opacity = st.slider("Transparencia del fondo 🌫️", 0.0, 1.0, 1.0, 0.05)
 
 # 🌟 Convertir HEX a RGBA
@@ -40,7 +40,7 @@ def hex_to_rgba(hex_color, alpha):
 bg_color = hex_to_rgba(bg_base_color, bg_opacity)
 
 # 🖼️ Área de dibujo
-st.subheader("🎀 ¡Dibuja algo mágico y haz clic en analizar! 🪄")
+st.subheader("Dibuja algo brutal y deja que analice")
 canvas_result = st_canvas(
     fill_color="rgba(255, 182, 193, 0.4)",  # rosado pastel con transparencia
     stroke_width=stroke_width,
@@ -58,7 +58,7 @@ os.environ['OPENAI_API_KEY'] = ke
 api_key = os.environ.get('OPENAI_API_KEY')
 
 # 🧠 Botón para analizar
-analyze_button = st.button("🔍 Analiza mi dibujo ✨", type="primary")
+analyze_button = st.button("Analizar", type="primary")
 
 if canvas_result.image_data is not None and api_key and analyze_button:
     with st.spinner("✨ Analizando tu obra de arte... espera un momento 🪄"):
