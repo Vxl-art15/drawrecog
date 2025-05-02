@@ -61,7 +61,7 @@ api_key = os.environ.get('OPENAI_API_KEY')
 analyze_button = st.button("Reconoce", type="primary")
 
 if canvas_result.image_data is not None and api_key and analyze_button:
-    with st.spinner("Descifrando los secretos de tu creatividad... (¡sorpresas en camino!)""):
+    with st.spinner("Descifrando los secretos de tu creatividad... (¡sorpresas en camino!)"):
         input_numpy_array = np.array(canvas_result.image_data)
         input_image = Image.fromarray(input_numpy_array.astype('uint8'),'RGBA')
         input_image.save('img.png')
